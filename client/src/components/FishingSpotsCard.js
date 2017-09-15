@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FishingSpotsStyle = styled.div`
+  display: flex:
+  justify-content: center;
   width: 30%;
   margin: 20px 0; 
   box-shadow: 1px 1px 5px black;
@@ -13,6 +15,7 @@ const FishingSpotsStyle = styled.div`
   }
   h3{
     padding: 5px 0;
+    text: center;
   }
 `;
 

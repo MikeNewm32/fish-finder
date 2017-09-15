@@ -1,3 +1,3 @@
 class Fish < ApplicationRecord
-    belongs_to :fishing_spots
+    belongs_to :fishingSpot
 end
