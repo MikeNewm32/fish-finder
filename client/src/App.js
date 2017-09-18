@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import AllFishingSpots from './components/AllFishingSpots';
 import FishingSpot from './components/FishingSpot';
+import EditFishingSpot from './components/EditFishingSpot';
 import GlobalNav from './components/GlobalNav';
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
@@ -23,6 +24,7 @@ class App extends Component {
           <Route exact path='/user/' component={User} />
           <Route exact path='/fishing_spots' component={AllFishingSpots} />
           <Route exact path='/fishing_spots/:id' component={FishingSpot} />
+          <Route exact path='/fishing_spots/:id/edit' component={EditFishingSpot} />
 
        </div>
       </Router>

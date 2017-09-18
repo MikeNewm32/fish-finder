@@ -38,7 +38,7 @@ class FishingSpot extends Component {
   }
 
 componentWillMount(){
-    //   const fishingSpotId = this.props.match.params.id;
+      const fishingSpotId = this.props.match.params.id;
       this._fetchFishingSpotAndFish();
       
   }
@@ -49,7 +49,7 @@ componentWillMount(){
           const res = await axios.get(`/api/fishing_spots/${id}`)
           this.setState({
            fishing_spot: res.data.fishing_spot
-        //    fish: res.data.fish
+           fish: res.data.fish
           })
         
           return res.data
