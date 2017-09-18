@@ -38,27 +38,27 @@ class FishingSpot extends Component {
   }
 
 componentWillMount(){
-      const fishingSpotId = this.props.match.params.id;
-    //   this._fetchFishingSpotAndFish();
+    //   const fishingSpotId = this.props.match.params.id;
+      this._fetchFishingSpotAndFish();
       
   }
 
-//   _fetchFishingSpotAndFish = async () => {
-//       try {
-//           const id = this.props.match.params.id;
-//           const res = await axios.get(`/api/fishing_spots/${id}/fish`)
-//           await this.setState({
-//            fishing_spot: res.data.fishing_spot,
-//            fish: res.data.fish
-//           })
+  _fetchFishingSpotAndFish = async () => {
+      try {
+          const id = this.props.match.params.id;
+          const res = await axios.get(`/api/fishing_spots/${id}`)
+          this.setState({
+           fishing_spot: res.data.fishing_spot
+        //    fish: res.data.fish
+          })
         
-//           return res.data
-//           console.log(res.data)
-//       }
-//       catch(err) {
-//           console.log(err)
-//       }
-//   }
+          return res.data
+          console.log(res.data)
+      }
+      catch(err) {
+          console.log(err)
+      }
+  }
   _deleteFishingSpot = async (e) => {
       e.preventDefault();
       try {
@@ -71,15 +71,16 @@ componentWillMount(){
           console.log(err)
       }
   }
+
   render() {
     return (
             <div>
             <FishingSpotStyle>
             <img src={this.state.fishing_spot.image} />
-            <h1><strong>Name:{this.state.fishing_spot.title}</strong></h1>
-            <p>Description:{this.state.fishing_spot.description}</p>
-            <p>Location:{this.state.fishing_spot.location}</p>
-            <p>Fish:</p>
+            <h1>Name:{this.state.fishing_spot.title}</h1>
+            <h2>Description:{this.state.fishing_spot.description}</h2>
+            <h2>Location:{this.state.fishing_spot.location}</h2>
+            <h2>Fish:</h2>
             {/* <FishList fish={this.state.fish} fishingSpotsId={this.props.match.params.id}/> */}
             <Link to={`/fishing_spots/${this.props.match.params.id}/edit`}><button>Edit Fishing Spot</button></Link>
             <button onClick={this._deleteFishingSpot}>Delete This Location</button>

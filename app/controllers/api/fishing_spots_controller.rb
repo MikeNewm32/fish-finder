@@ -7,6 +7,7 @@ class Api::FishingSpotsController < ApplicationController
     
     def show
         @fishing_spot = FishingSpot.find(params[:id])
+
         render json: @fishing_spot
     end
 

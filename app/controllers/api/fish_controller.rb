@@ -2,7 +2,7 @@ class Api::FishController < ApplicationController
 
     def index
         @fishing_spots = FishingSpot.find(params[:fishing_spots_id])
-        @fish_index = @fishing_spots.fish.all
+        @fishing_spot_fish_index = @fishing_spots.fish.all
 
         render json: @fish_index
     end
