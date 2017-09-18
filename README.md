@@ -1,24 +1,14 @@
-# README
+# Fish Finder README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Reason
+I created this app to aid in documenting where and how an angler was able to catch fish. An angler is able to attach photos and location information for bodies of water and also for the fish they catch. Doing so allows them to keep information for future trips.
 
-Things you may want to cover:
+## ERD
+<a href="https://imgur.com/Juk6KEq"><img src="https://i.imgur.com/Juk6KEq.png" title="source: imgur.com" /></a>
 
-* Ruby version
+## Trello
+<a href="https://trello.com/b/DisjjlKF/fish-finder">Trello</a>
 
-* System dependencies
+## WireFrames
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##

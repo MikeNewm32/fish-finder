@@ -80,8 +80,8 @@ class EditFishingSpot extends Component {
                         <input onChange={this._handleChange} type="text" name="description" value={this.state.fishing_spot.description} />
                     </div>
                     <div>
-                        <label htmlFor="photo">photo: </label>
-                        <input onChange={this._handleChange} type="text" name="photo" value={this.state.fishing_spot.photo} />
+                        <label htmlFor="image">image: </label>
+                        <input onChange={this._handleChange} type="text" name="image" value={this.state.fishing_spot.image} />
                     </div>
                     <button onClick={this._editTeacher}>Submit</button>
                 </form>

@@ -49,7 +49,7 @@ componentWillMount(){
           const res = await axios.get(`/api/fishing_spots/${id}`)
           this.setState({
            fishing_spot: res.data.fishing_spot
-           fish: res.data.fish
+        //    fish: res.data.fish
           })
         
           return res.data
