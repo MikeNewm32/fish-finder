@@ -6,9 +6,9 @@ I created this app to aid in documenting where and how an angler was able to cat
 ## ERD
 <a href="https://imgur.com/Juk6KEq"><img src="https://i.imgur.com/Juk6KEq.png" title="source: imgur.com" /></a>
 
-## Trello
+## Trello and Wireframe
 <a href="https://trello.com/b/DisjjlKF/fish-finder">Trello</a>
 
-## WireFrames
-
-##
+<a href="https://imgur.com/hdmlDLU"><img src="https://i.imgur.com/hdmlDLU.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/KKs9pZt"><img src="https://i.imgur.com/KKs9pZt.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/X77FIev"><img src="https://i.imgur.com/X77FIev.png" title="source: imgur.com" /></a>
