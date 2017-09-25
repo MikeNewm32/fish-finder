@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Link, Redirect} from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
+import FishCard from './FishCard';
 // import FishList from './FishList'
 
 const FishingSpotStyle = styled.div`
@@ -61,8 +62,9 @@ class FishingSpot extends Component {
 
   _fetchAllFish = async (userId, fishingSpotId) => {
     try {
-        const res = await axios.get(`/api/users/${userId}/fishing_spots/${fishingSpotId}`)
-        await this.setState({fish: res.data.fish})
+        const res = await axios.get(`/api/users/${userId}/fishing_spots/${fishingSpotId}/fish`)
+        console.log(res.data)
+        await this.setState({fish: res.data})
         return res.data
     }
     catch (err) {
@@ -100,9 +102,12 @@ class FishingSpot extends Component {
             <h2>Description:{this.state.fishing_spot.description}</h2>
             <h2>Location:{this.state.fishing_spot.location}</h2>
             <h2>Fish:</h2>
-            {/* <FishList fish={this.state.fish} fishingSpotsId={this.props.match.params.id}/> */}
+            {this.state.fish.map((fish) => {
+                return <FishCard userId={userId} fishingId={fishingId} fish={fish} key={fish.id}/>
+            })}
             <Link to={`/user/${userId}/edit_fishing_spots/${fishingId}`}><button>Edit Fishing Spot</button></Link>
             <button onClick={this._deleteFishingSpot}>Delete This Location</button>
+            
             </FishingSpotStyle>
             </div>
                 }

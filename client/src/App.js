@@ -12,13 +12,14 @@ import styled from 'styled-components';
 import Fish from './components/Fish';
 import EditFish from './components/EditFish';
 import {setAxiosDefaults} from './util';
+import './App.css';
 
 class App extends Component {
 
   render() {
     return (
       <Router>
-        <div>
+        <div className="App-body-container">
           <GlobalNav />
           <Route exact path='/' component={HomePage} />
           <Route exact path='/login' component={LogIn} />

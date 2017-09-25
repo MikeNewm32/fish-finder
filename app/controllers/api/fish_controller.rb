@@ -3,8 +3,8 @@ class Api::FishController < ApplicationController
     
     def index
         @user = User.find params[:user_id]
-        @fishing_spot = @user.fishing_spot.find(params[:fishing_spot_id])
-        @fish_index = @fishing_spot.fish.all
+        @fishing_spot = @user.fishing_spots.find(params[:fishing_spot_id])
+        @fish_index = @fishing_spot.fish
 
         render json: @fish_index
     end
@@ -15,7 +15,7 @@ class Api::FishController < ApplicationController
 
     def show
         @user = User.find params[:user_id]
-        @fishing_spot = @user.fishing_spot.find(params[:fishing_spot_id])
+        @fishing_spot = @user.fishing_spots.find(params[:fishing_spot_id])
         @fish = @fishing_spot.fish.find(params[:id])
         render json: @fish
     end

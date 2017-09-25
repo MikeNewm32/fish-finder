@@ -30,7 +30,12 @@ class Fish extends Component {
     render() {
         return (
             <div>
-                
+                {this.state.fish.name}
+                <img src={this.state.fish.photo} />
+                <span>length: {this.state.fish.length}</span>
+                <br />
+                <span>weight: {this.state.fish.weight}</span>
+                {this.state.fish.description}
             </div>
         );
     }

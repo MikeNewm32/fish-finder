@@ -22,3 +22,10 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+App-body-container {
+  background-image: url("http://www.habershamchamber.com/external/wcpages/wcmedia/images/lake_burton.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+}

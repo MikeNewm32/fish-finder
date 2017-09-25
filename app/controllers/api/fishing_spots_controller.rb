@@ -28,8 +28,8 @@ class Api::FishingSpotsController < ApplicationController
     def update
         @fishing_spot = FishingSpot.find params[:id]
         console.log(@fishing_spot)
-        @fishing_spot.update(fishing_spot_params)
-      end
+        @fishing_spot.update!(fishing_spot_params)
+    end
 
       def destroy
         @fishing_spot = FishingSpot.find(params[:id])
