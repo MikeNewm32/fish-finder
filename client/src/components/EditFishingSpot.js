@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components'
 
 
@@ -26,22 +26,23 @@ class EditFishingSpot extends Component {
         super();
         this.state = {
             fishing_spot: {
-            title: '',
-            description: '',
-            image: ''
-            }
+                title: '',
+                description: '',
+                image: ''
+            },
+            redirect: false
         }
     }
 
     componentWillMount() {
-        const userId = this.props.match.params.userId
-        this._fetchFishingSpot(userId)
+        const userId = this.props.match.params.userId;
+        const fishingId = this.props.match.params.fishingSpotId;
+        this._fetchFishingSpot(userId, fishingId)
     }
     
-    _fetchFishingSpot = async (userId) => {
-        const id = this.props.match.params.fishingSpotId
+    _fetchFishingSpot = async (userId, fishingId) => {
         try {
-            const res = await axios.get(`/api/users/${userId}/fishing_spots/${id}`);
+            const res = await axios.get(`/api/users/${userId}/fishing_spots/${fishingId}`);
             console.log(res.data)
             await this.setState({fishing_spot: res.data});
             return res.data;
@@ -60,22 +61,22 @@ class EditFishingSpot extends Component {
     _editFishingSpot = (e) => {
         e.preventDefault();
         const userId = this.props.match.params.userId
-        const id = this.props.match.params.fishingSpotId
+        const fishingId = this.props.match.params.fishingSpotId
         const payload = this.state.fishing_spot
+        payload.user_id = userId;
         try {
-            const res = axios.put(`/api/users/${userId}/edit_fishing_spots/${id}`, payload)
+            const res = axios.put(`/api/users/${userId}/fishing_spots/${fishingId}`, payload)
         } catch (err) {
             console.log(err)
         }
     }
 
     render() {
-        const id = this.state.fishing_spot.id
         return (
             <div>
-                <form>
+                <form onSubmit={this._editFishingSpot}>
                     <div>
-                        <label htmlFor="title">Title: </label>
+                        <label htmlFor="title">Lake Name: </label>
                         <input onChange={this._handleChange} type="text" name="title" value={this.state.fishing_spot.title} />
                     </div>
                     <div>
@@ -83,10 +84,14 @@ class EditFishingSpot extends Component {
                         <input onChange={this._handleChange} type="text" name="description" value={this.state.fishing_spot.description} />
                     </div>
                     <div>
+                        <label htmlFor="location">Location: </label>
+                        <input onChange={this._handleChange} type="text" name="location" value={this.state.fishing_spot.location} />
+                    </div>
+                    <div>
                         <label htmlFor="image">Image: </label>
                         <input onChange={this._handleChange} type="text" name="image" value={this.state.fishing_spot.image} />
                     </div>
-                    <button onClick={this._editFishingSpot}>Submit</button>
+                    <button>Submit</button>
                 </form>
                 <br />
             </div>
