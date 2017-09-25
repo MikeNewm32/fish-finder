@@ -28,20 +28,22 @@ class EditFishingSpot extends Component {
             fishing_spot: {
             title: '',
             description: '',
-            photo: ''
+            image: ''
             }
         }
     }
 
     componentWillMount() {
-        this._fetchFishingSpot()
+        const userId = this.props.match.params.userId
+        this._fetchFishingSpot(userId)
     }
     
-    _fetchFishingSpot = async () => {
-        const id = this.props.match.params.id
+    _fetchFishingSpot = async (userId) => {
+        const id = this.props.match.params.fishingSpotId
         try {
-            const res = await axios.get(`/api/fishing_spots/${id}`);
-            await this.setState({fishing_spot: res.data.fishing_spot});
+            const res = await axios.get(`/api/users/${userId}/fishing_spots/${id}`);
+            console.log(res.data)
+            await this.setState({fishing_spot: res.data});
             return res.data;
         }
         catch (err) {
@@ -57,10 +59,11 @@ class EditFishingSpot extends Component {
 
     _editFishingSpot = (e) => {
         e.preventDefault();
-        const id = this.props.match.params.id
+        const userId = this.props.match.params.userId
+        const id = this.props.match.params.fishingSpotId
         const payload = this.state.fishing_spot
         try {
-            const res = axios.patch(`/api/fishing_spots/${id}`, payload)
+            const res = axios.put(`/api/users/${userId}/edit_fishing_spots/${id}`, payload)
         } catch (err) {
             console.log(err)
         }
@@ -72,18 +75,18 @@ class EditFishingSpot extends Component {
             <div>
                 <form>
                     <div>
-                        <label htmlFor="title">title: </label>
+                        <label htmlFor="title">Title: </label>
                         <input onChange={this._handleChange} type="text" name="title" value={this.state.fishing_spot.title} />
                     </div>
                     <div>
-                        <label htmlFor="description">description: </label>
+                        <label htmlFor="description">Description: </label>
                         <input onChange={this._handleChange} type="text" name="description" value={this.state.fishing_spot.description} />
                     </div>
                     <div>
-                        <label htmlFor="image">image: </label>
+                        <label htmlFor="image">Image: </label>
                         <input onChange={this._handleChange} type="text" name="image" value={this.state.fishing_spot.image} />
                     </div>
-                    <button onClick={this._editTeacher}>Submit</button>
+                    <button onClick={this._editFishingSpot}>Submit</button>
                 </form>
                 <br />
             </div>

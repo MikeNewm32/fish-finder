@@ -25,12 +25,13 @@ class AllFishingSpots extends Component{
   }
 
   componentWillMount(){
-    this._fetchFishingSpots();
+    const userId = this.props.match.params.userId;
+    this._fetchFishingSpots(userId);
   }
 
-  _fetchFishingSpots = async () => {
+  _fetchFishingSpots = async (userId) => {
     try {
-      const response = await axios.get('/api/fishing_spots');
+      const response = await axios.get(`/api/users/${userId}/fishing_spots`);
       const fishing_spots = response.data;
       this.setState({fishing_spots});
     } catch (err) {
@@ -39,10 +40,11 @@ class AllFishingSpots extends Component{
   }
 
   render(){
+    const userId = this.props.match.params.userId;
     return (
       <FishingSpotsContainer>
-        {this.state.fishing_spots.map((fishing_spots) => (
-        <FishingSpotsCard key={fishing_spots.id} fishing_spots={fishing_spots} />
+        {this.state.fishing_spots.map((fishing_spot) => (
+        <FishingSpotsCard key={fishing_spot.id} fishing_spot={fishing_spot} userId={userId} />
         ))}
       </FishingSpotsContainer>
     )

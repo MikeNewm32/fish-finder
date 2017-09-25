@@ -33,25 +33,24 @@ class FishingSpot extends Component {
               location:'',
               image:''
           },
+          fish: [],
           redirect: false
       };
   }
 
-componentWillMount(){
-      const fishingSpotId = this.props.match.params.id;
-      this._fetchFishingSpotAndFish();
-      
-  }
+    componentWillMount(){
+        const userId = this.props.match.params.userId;
+        const fishingSpotId = this.props.match.params.fishingSpotId;
+        this._fetchFishingSpot(userId, fishingSpotId);
+        this._fetchAllFish(userId, fishingSpotId);
+    }
 
-  _fetchFishingSpotAndFish = async () => {
+  _fetchFishingSpot = async (userId, fishingSpotId) => {
       try {
-          const id = this.props.match.params.id;
-          const res = await axios.get(`/api/fishing_spots/${id}`)
+          const res = await axios.get(`/api/users/${userId}/fishing_spots/${fishingSpotId}`)
           this.setState({
-           fishing_spot: res.data.fishing_spot
-        //    fish: res.data.fish
+           fishing_spot: res.data
           })
-        
           return res.data
           console.log(res.data)
       }
@@ -59,6 +58,18 @@ componentWillMount(){
           console.log(err)
       }
   }
+
+  _fetchAllFish = async (userId, fishingSpotId) => {
+    try {
+        const res = await axios.get(`/api/users/${userId}/fishing_spots/${fishingSpotId}`)
+        await this.setState({fish: res.data.fish})
+        return res.data
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
+  
   _deleteFishingSpot = async (e) => {
       e.preventDefault();
       try {
@@ -73,6 +84,8 @@ componentWillMount(){
   }
 
   render() {
+    const userId = this.props.match.params.userId
+    const fishingId = this.props.match.params.fishingSpotId
     return (
             <div>
             <FishingSpotStyle>
@@ -82,7 +95,7 @@ componentWillMount(){
             <h2>Location:{this.state.fishing_spot.location}</h2>
             <h2>Fish:</h2>
             {/* <FishList fish={this.state.fish} fishingSpotsId={this.props.match.params.id}/> */}
-            <Link to={`/fishing_spots/${this.props.match.params.id}/edit`}><button>Edit Fishing Spot</button></Link>
+            <Link to={`/user/${userId}/edit_fishing_spots/${fishingId}`}><button>Edit Fishing Spot</button></Link>
             <button onClick={this._deleteFishingSpot}>Delete This Location</button>
             </FishingSpotStyle>
             </div>

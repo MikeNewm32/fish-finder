@@ -9,6 +9,8 @@ import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import User from './components/User';
 import styled from 'styled-components';
+import Fish from './components/Fish';
+import EditFish from './components/EditFish';
 import {setAxiosDefaults} from './util';
 
 class App extends Component {
@@ -18,14 +20,14 @@ class App extends Component {
       <Router>
         <div>
           <GlobalNav />
-          <Route exact path='/' component={AllFishingSpots} />
+          <Route exact path='/' component={HomePage} />
           <Route exact path='/login' component={LogIn} />
           <Route exact path='/signup' component={SignUp} />
-          <Route exact path='/user/' component={User} />
-          <Route exact path='/fishing_spots' component={AllFishingSpots} />
-          <Route exact path='/fishing_spots/:id' component={FishingSpot} />
-          <Route exact path='/fishing_spots/:id/edit' component={EditFishingSpot} />
-
+          <Route exact path='/user/:userId/my_fishing_spots' component={AllFishingSpots} />
+          <Route exact path='/user/:userId/fishing_spots/:fishingSpotId' component={FishingSpot} />
+          <Route exact path='/user/:userId/edit_fishing_spots/:fishingSpotId/' component={EditFishingSpot} />
+          <Route exact path='/user/:userId/fishing_spots/:fishingSpotId/fish/:fishId' component={Fish} />
+          <Route exact path='/user/:userId/fishing_spots/:fishingSpotId/editfish/:fishId' component={EditFish} />
        </div>
       </Router>
     );

@@ -18,7 +18,9 @@ class HomePage extends Component {
     render() {
         return (
             <HomePageContainer>
-            <Link to="/fishing_spots"><h1>Fishing Spots</h1></Link>
+            {/* <Link to="/user/fishing_spots"><h1>Fishing Spots</h1></Link>
+             */}
+             Welcome to my fishing spots app!
            </HomePageContainer>
 
         );

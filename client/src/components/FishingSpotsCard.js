@@ -20,12 +20,13 @@ const FishingSpotsStyle = styled.div`
 `;
 
 const FishingSpotsCard = (props) => {
-  const fishing_spots = props.fishing_spots;
+  const fishing_spot = props.fishing_spot;
+  console.log(fishing_spot.id);
   return (
     <FishingSpotsStyle>
-      <Link to={`/fishing_spots/${fishing_spots.id}`}>
-      <h3>{fishing_spots.title}</h3>
-      <img src={fishing_spots.image} alt={fishing_spots.name} />
+      <Link to={`/user/${props.userId}/fishing_spots/${fishing_spot.id}`}>
+        <h3>{fishing_spot.title}</h3>
+        <img src={fishing_spot.image} alt="" />
       </Link>
     </FishingSpotsStyle>
   );
