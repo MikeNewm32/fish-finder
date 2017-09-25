@@ -31,6 +31,7 @@ class FishingSpot extends Component {
               location:'',
               image:''
           },
+          weather: [],
           fish: [],
           redirect: false
       };
@@ -46,6 +47,9 @@ class FishingSpot extends Component {
   _fetchFishingSpot = async (userId, fishingSpotId) => {
       try {
           const res = await axios.get(`/api/users/${userId}/fishing_spots/${fishingSpotId}`)
+          const location = res.data.location;
+          console.log(location);
+          const weatherData = this._fetchWeather(location);
           this.setState({
            fishing_spot: res.data
           })
@@ -68,6 +72,7 @@ class FishingSpot extends Component {
         console.log(err)
     }
 }
+    
   
   _deleteFishingSpot = async (e) => {
       e.preventDefault();
