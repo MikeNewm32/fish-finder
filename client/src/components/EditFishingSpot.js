@@ -72,8 +72,13 @@ class EditFishingSpot extends Component {
     }
 
     render() {
+        const userId = this.props.match.params.userId;
         return (
             <div>
+                {this.state.redirect? 
+                <Redirect to={`/user/${userId}/my_fishing_spots`}/>
+                :
+                <div>
                 <form onSubmit={this._editFishingSpot}>
                     <div>
                         <label htmlFor="title">Lake Name: </label>
@@ -93,7 +98,8 @@ class EditFishingSpot extends Component {
                     </div>
                     <button>Submit</button>
                 </form>
-                <br />
+                </div>
+                }
             </div>
         );
     }

@@ -40,7 +40,7 @@ class Fish extends Component {
                 <br />
                 <span>weight: {this.state.fish.weight}</span>
                 {this.state.fish.description}
-                <Link to={`/user/${userId}/fishing_spots/${fishingSpotId}/editfish/${fishId}`}>Edit Fish</Link>
+                <Link to={`/user/${userId}/fishing_spots/${fishingSpotId}/editfish/${fishId}`}><button>Edit Fish</button></Link>
             </div>
         );
     }

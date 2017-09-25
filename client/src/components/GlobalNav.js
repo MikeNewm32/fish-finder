@@ -11,7 +11,7 @@ font-family: 'Fjalla One', sans-serif;
   align-items: center;
   padding: 0 2.5%;
   background-color: rgba(0,0,0,.7);
-  box-shadow: 0px 1px 6px black;
+  box-shadow: 0px 4px 6px black;
   a{
     text-decoration: none;
     margin: 0 5px;

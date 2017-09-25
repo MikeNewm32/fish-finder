@@ -4,10 +4,17 @@ import styled from 'styled-components';
 
 const HomePageContainer = styled.div`
 display: flex;
-flex-direction: column;
-justify-content: space-between;
+flex-wrap: wrap;
+justify-content: center;
 height: 100vh;
 width: 100vw;
+background-image: url("http://www.habershamchamber.com/external/wcpages/wcmedia/images/lake_burton.jpg");
+background-size: cover;
+background-position: center;
+h1 {
+    margin: 10px;
+    color: white;
+}
 `
 
 
@@ -17,7 +24,7 @@ class HomePage extends Component {
             <HomePageContainer>
             {/* <Link to="/user/fishing_spots"><h1>Fishing Spots</h1></Link>
              */}
-             Welcome to my fishing spots app!
+             <h1>Welcome to my fishing spots app!</h1>
            </HomePageContainer>
 
         );

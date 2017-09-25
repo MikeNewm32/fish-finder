@@ -11,9 +11,6 @@ flex-direction: column;
 justify-content: space-around;
 height: 100vh;
 width: 100vw;
-background-image: url("http://www.habershamchamber.com/external/wcpages/wcmedia/images/lake_burton.jpg");
-background-size: cover;
-background-position: center;
   img {
     max-height: 400px;
     width: 100%;

@@ -42,8 +42,9 @@ class SignUp extends Component {
      return <Redirect to="/" />
    }
    return (
-     <div>
+     <div className="sign-in-container">
        <form onSubmit={this._signUp}>
+         <div className="sign-in-form">
          <div>
            <label htmlFor="email">E-mail: </label>
            <input onChange={this._handleChange} type="text" name="email" value={this.state.email} />
@@ -58,6 +59,7 @@ class SignUp extends Component {
          </div>
          
          <button>Sign Up</button>
+         </div>
        </form>
      </div>
    );

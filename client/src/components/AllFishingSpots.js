@@ -10,9 +10,6 @@ flex-direction: column;
 justify-content: space-around;
 height: 100vh;
 width: 100vw;
-background-image: url("http://www.habershamchamber.com/external/wcpages/wcmedia/images/lake_burton.jpg");
-background-size: cover;
-background-position: center;
 `;
 
 class AllFishingSpots extends Component{
@@ -46,7 +43,7 @@ class AllFishingSpots extends Component{
         {this.state.fishing_spots.map((fishing_spot) => (
         <FishingSpotsCard key={fishing_spot.id} fishing_spot={fishing_spot} userId={userId} />
         ))}
-        <Link to={`/user/${userId}/new_fishing_spot`}> New Lake </Link>
+        <Link to={`/user/${userId}/new_fishing_spot`}><button>New Lake</button></Link>
       </FishingSpotsContainer>
     )
   }
