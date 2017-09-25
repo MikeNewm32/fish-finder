@@ -1,8 +1,9 @@
 class Api::FishController < ApplicationController
 
     def index
-        @fishing_spots = FishingSpot.find(params[:fishing_spots_id])
-        @fishing_spot_fish_index = @fishing_spots.fish.all
+        @user = User.find params[:id]
+        @fishing_spot = @user.fishing_spot.find(params[:id])
+        @fish_index = @fishing_spot.fish.all
 
         render json: @fish_index
     end
@@ -27,7 +28,7 @@ class Api::FishController < ApplicationController
     private
 
     def fishing_spot_params
-        params.require(:fish).permit(:name, :length, :weight, :photo)
+        params.require(:fish).permit(:name, :length, :weight, :photo, :fishing_spot_id)
     end
 
 end

@@ -5,12 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+User.destroy_all
 FishingSpot.destroy_all
 Fish.destroy_all
 
-lake_allatoona = FishingSpot.create(title: "Lake Allatoona", location: "Northwest of Atlanta,GA", description: "This 11,860-acre U.S. Army Corps of Engineers impoundment of the Etowah River is 30 miles north of Atlanta.  Allatoona features convenient boat ramp access and parking, as well as camping opportunities.  The lake receives heavy use from boaters, skiers and anglers given its close proximity to Atlanta.", image:"http://tritonmike.com/toonamap1.JPG")
-clarks_hill_lake = FishingSpot.create(title: "Clarks Hill Lake", location: "Georgia S. Carolina border near Augusta,GA", description: "Clarks Hill (known as J. Strom Thurmond in S.C.) is Georgia's largest reservoir at 71,535 acres.  This U.S. Army Corps of Engineers reservoir is located 30 miles northeast of Augusta on the Savannah River. The numerous creeks feeding the lake, over 1,200 miles of shoreline and large areas of open water provide a wide range of fishing opportunities.", image: "http://metrospirit.com/wp-content/uploads/2014/07/Clarks-Hill-Lake-1.gif")
+dirtyMike = User.create({email: "mike@gmail.com", password: "12345678", password_confirmation: "12345678"})
+
+lake_allatoona = FishingSpot.create(title: "Lake Allatoona", location: "Northwest of Atlanta,GA", description: "This 11,860-acre U.S. Army Corps of Engineers impoundment of the Etowah River is 30 miles north of Atlanta.  Allatoona features convenient boat ramp access and parking, as well as camping opportunities.  The lake receives heavy use from boaters, skiers and anglers given its close proximity to Atlanta.", image:"http://tritonmike.com/toonamap1.JPG", user_id: dirtyMike.id)
+clarks_hill_lake = FishingSpot.create(title: "Clarks Hill Lake", location: "Georgia S. Carolina border near Augusta,GA", description: "Clarks Hill (known as J. Strom Thurmond in S.C.) is Georgia's largest reservoir at 71,535 acres.  This U.S. Army Corps of Engineers reservoir is located 30 miles northeast of Augusta on the Savannah River. The numerous creeks feeding the lake, over 1,200 miles of shoreline and large areas of open water provide a wide range of fishing opportunities.", image: "http://metrospirit.com/wp-content/uploads/2014/07/Clarks-Hill-Lake-1.gif", user_id: dirtyMike.id)
 
 fish_one = Fish.create({name: "Spotted Bass", length: 13, weight: 2, photo: "https://i.imgur.com/Ruup9pHm.jpg", fishing_spot_id: lake_allatoona.id})
 fish_two = Fish.create(name: "Stripped Bass", length: 24, weight: 7, photo: "https://i.imgur.com/iHZ6Lu6m.jpg", fishing_spot_id: lake_allatoona.id)

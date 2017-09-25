@@ -47,7 +47,7 @@ class Api::FishingSpotsController < ApplicationController
     private
 
     def fishing_spot_params
-        params.require(:fishing_spot).permit(:title, :description, :location)
+        params.require(:fishing_spot).permit(:title, :description, :location, :user_id)
     end
 
 end

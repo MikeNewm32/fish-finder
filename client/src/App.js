@@ -18,7 +18,7 @@ class App extends Component {
       <Router>
         <div>
           <GlobalNav />
-          <Route exact path='/' component={HomePage} />
+          <Route exact path='/' component={AllFishingSpots} />
           <Route exact path='/login' component={LogIn} />
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/user/' component={User} />
