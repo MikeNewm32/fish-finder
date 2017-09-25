@@ -46,6 +46,7 @@ class AllFishingSpots extends Component{
         {this.state.fishing_spots.map((fishing_spot) => (
         <FishingSpotsCard key={fishing_spot.id} fishing_spot={fishing_spot} userId={userId} />
         ))}
+        <Link to={`/user/${userId}/new_fishing_spot`}> New Lake </Link>
       </FishingSpotsContainer>
     )
   }

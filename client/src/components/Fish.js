@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link, Redirect } from 'react-router-dom';
 
 class Fish extends Component {
     constructor() {
@@ -28,6 +29,9 @@ class Fish extends Component {
     }
 
     render() {
+        const userId = this.props.match.params.userId;
+        const fishingSpotId = this.props.match.params.fishingSpotId;
+        const fishId = this.props.match.params.fishId;
         return (
             <div>
                 {this.state.fish.name}
@@ -36,6 +40,7 @@ class Fish extends Component {
                 <br />
                 <span>weight: {this.state.fish.weight}</span>
                 {this.state.fish.description}
+                <Link to={`/user/${userId}/fishing_spots/${fishingSpotId}/editfish/${fishId}`}>Edit Fish</Link>
             </div>
         );
     }

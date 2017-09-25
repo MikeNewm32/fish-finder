@@ -14,15 +14,10 @@ class Api::FishingSpotsController < ApplicationController
     end
 
     def create
-        @fishing_spots = FishingSpot.create(fishing_spot_params)
-    
-        if @fishing_spots.save
-          render json: @fishing_spots
-        else
-          render json: {
-            message: 'Error when creating Fishing Spot'
-          }
-        end
+        @user = User.find(params[:user_id])
+        @fishing_spot = FishingSpot.create(fishing_spot_params)
+        # redirect_to api_user_path(@user)
+        
       end
 
     def update

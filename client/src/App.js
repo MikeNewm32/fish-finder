@@ -13,6 +13,7 @@ import Fish from './components/Fish';
 import EditFish from './components/EditFish';
 import {setAxiosDefaults} from './util';
 import './App.css';
+import NewFishingSpot from './components/NewFishingSpot';
 
 class App extends Component {
 
@@ -25,6 +26,7 @@ class App extends Component {
           <Route exact path='/login' component={LogIn} />
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/user/:userId/my_fishing_spots' component={AllFishingSpots} />
+          <Route exact path='/user/:userId/new_fishing_spot' component={NewFishingSpot} />
           <Route exact path='/user/:userId/fishing_spots/:fishingSpotId' component={FishingSpot} />
           <Route exact path='/user/:userId/edit_fishing_spots/:fishingSpotId/' component={EditFishingSpot} />
           <Route exact path='/user/:userId/fishing_spots/:fishingSpotId/fish/:fishId' component={Fish} />
