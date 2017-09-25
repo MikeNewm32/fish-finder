@@ -72,8 +72,10 @@ class FishingSpot extends Component {
   
   _deleteFishingSpot = async (e) => {
       e.preventDefault();
+      const userId = this.props.match.params.userId
+      const fishingSpotId = this.props.match.params.fishingSpotId;
       try {
-          const res = await axios.delete(`/api/fishing_spots/${this.props.match.params.id}`)
+          const res = await axios.delete(`/api/users/${userId}/fishing_spots/${fishingSpotId}`)
           this.setState({redirect: true})
           return res.data
           
@@ -88,6 +90,10 @@ class FishingSpot extends Component {
     const fishingId = this.props.match.params.fishingSpotId
     return (
             <div>
+                {this.state.redirect ?
+                <Redirect to={`/user/${userId}/my_fishing_spots`}/>
+                :
+                <div>
             <FishingSpotStyle>
             <img src={this.state.fishing_spot.image} />
             <h1>Name:{this.state.fishing_spot.title}</h1>
@@ -98,6 +104,8 @@ class FishingSpot extends Component {
             <Link to={`/user/${userId}/edit_fishing_spots/${fishingId}`}><button>Edit Fishing Spot</button></Link>
             <button onClick={this._deleteFishingSpot}>Delete This Location</button>
             </FishingSpotStyle>
+            </div>
+                }
             </div>
     )
   }
